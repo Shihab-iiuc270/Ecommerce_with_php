@@ -30,7 +30,8 @@ include("./includes/header.php");
     <div class="col-lg-9">
       <div class="row g-4">
         
-      <?php getproducts();
+      <?php 
+ get_all_products();
  get_categories_unique();
  get_occasions_unique();
       ?>

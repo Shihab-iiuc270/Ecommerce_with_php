@@ -4,7 +4,7 @@ include("./functions/common_function.php");
 include("./includes/header.php");
 ?>
 <script>
-  document.title = 'E-Home'
+  document.title = 'E-Searching Product'
 </script>
 
 <!-- navbar -->
@@ -13,7 +13,7 @@ include("./includes/header.php");
 
 <!-- homepage -->
 <div class="container my-4">
-  <div class="hero-banner">Find the Perfect Gift For Every Occasion</div>
+  <div class="hero-banner">Search Results for : "<?php echo isset($_GET['search_data'])?htmlspecialchars($_GET['search_data']):"Products"?>"</div>
 </div>
 <div class="container">
   <div class="row">
@@ -30,7 +30,8 @@ include("./includes/header.php");
     <div class="col-lg-9">
       <div class="row g-4">
         
-      <?php getproducts();
+      <?php 
+      search_products();
  get_categories_unique();
  get_occasions_unique();
       ?>
