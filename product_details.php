@@ -33,7 +33,4 @@ include("./includes/header.php");
 </script>
 
 <?php include("./includes/footer.php") ?>;
-
-</body>
-
-</html>
+<?php include("./includes/scripts_footer.php")?>

@@ -43,6 +43,4 @@ include("./includes/header.php");
 
 <!-- foot0er -->
 <?php include("./includes/footer.php") ?>;
-</body>
-
-</html>
+<?php include("./includes/scripts_footer.php")?>
