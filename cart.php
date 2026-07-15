@@ -160,7 +160,7 @@ include("./includes/header.php");
                     <div class="mt-3">
                         <a href="index.php" class="btn btn-outline-secondary me-2">Continue Shopping</a>
                         <?php if (isset($_SESSION['username'])) : ?>
-                            <a href="#" class="btn btn-custom">Proceed to Checkout</a>
+                            <a href="users_area/checkout.php" class="btn btn-custom">Proceed to Checkout</a>
 
                         <?php else : ?>
                             <a href="users_area/user_login.php?checkout=1" class="btn btn-custom">Login to Checkout</a>
