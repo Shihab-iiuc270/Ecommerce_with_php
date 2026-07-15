@@ -18,7 +18,6 @@ if(isset($_POST['user_register'])){
     $user_image= $_FILES['user_image']['name'];
     $user_image_tmp= $_FILES['user_image']['tmp_name'];
     $toast_message="";
-    $registration_success=false;
     if(empty($user_username) || empty($user_email) || empty($user_password) || empty($user_address) || empty($user_contact) || empty($user_image)){
         $toast_message= "Please fill all the required fields";
     }elseif(!preg_match("/^\d{11}$/",$user_contact)){
@@ -46,18 +45,29 @@ if(isset($_POST['user_register'])){
    $stmt_insert->bind_param('ssssss',$user_username,$user_email,$hashed_password,
    $user_image,$user_address,$user_contact);
    $result_insert=$stmt_insert->execute();
-   $_SESSION['username']=$user_username;
+   if($result_insert){
+    $user_id= $con->insert_id;
+   if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+       foreach($_SESSION['cart'] as $product_id =>$qty){
+            $insert_cart = $con->prepare("INSERT INTO `cart_details` (user_id, product_id, quantity) VALUES (?, ?, ?)");
+            $insert_cart->bind_param("iii", $user_id, $product_id, $qty);
+            $insert_cart->execute();     
+              }
+              unset($_SESSION['cart']);
+   }
+     $_SESSION['username']=$user_username;
+     $_SESSION['user_id']=$user_id;
     $toast_message="Registration Successful";
-    $registration_success=true;
 $_SESSION['toast_message']=$toast_message;
-if($registration_success){
-    echo "<script>window.location.href='../index.php'</script>";
-    exit();
-}else{
-    header("Location: user_registration.php");
-    exit();
-}
-
+echo "<script>window.location.href='../index.php'</script>";
+exit();
+   }else{
+    $toast_message="Registration failed";
+$_SESSION['toast_message']=$toast_message;
+header("Location: user_registration.php");           
+exit();
+   }
+ 
     }
         }
     }

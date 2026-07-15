@@ -163,7 +163,7 @@ include("./includes/header.php");
                             <a href="#" class="btn btn-custom">Proceed to Checkout</a>
 
                         <?php else : ?>
-                            <a href="users_area/user_login.php" class="btn btn-custom">Login to Checkout</a>
+                            <a href="users_area/user_login.php?checkout=1" class="btn btn-custom">Login to Checkout</a>
                         <?php endif; ?>
                     </div>
                 </div>
