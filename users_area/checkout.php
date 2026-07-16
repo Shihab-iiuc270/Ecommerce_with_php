@@ -3,6 +3,7 @@ ob_start();
 session_start();
 include("../includes/connect.php");
 include("../functions/common_function.php");
+include("../config/sslcommerz.php");
 
 if (!isset($_SESSION['username'])) {
     header("Location: user_login.php?checkout=1");
@@ -108,10 +109,9 @@ include('../includes/header.php');
             </div>
 
             <div class="payment-card">
-                <form id="paymentForm" method="post" action="process_payment.php">
-                    <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
+                <form id="paymentForm" method="post" action="payment_process.php">
                     <button type="submit" name="pay_now" class="btn btn-razorpay-pay w-100">
-                        <i class="fas fa-lock me-2"></i>Pay $<?php echo $total_price; ?> Now
+                        <i class="fas fa-lock me-2"></i>Pay $<?php echo number_format($total_price); ?> Now
                     </button>
                 </form>
                 <p class="text-center text-muted mt-3 mb-0">
