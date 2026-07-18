@@ -140,7 +140,7 @@ include("./includes/header.php");
                     echo "<tr>
         <td><input type='checkbox' name='remove[]' value='$product_id'></td>
         <td>$product_title</td>
-        <td><img src='images/$product_image1' alt='$product_title' style='width:50px;'></td>
+        <td><img src='./admin_area/product_images/$product_image1' alt='$product_title' style='width:50px;'></td>
         <td><input type='number' min='1' class='form-control w-50 mx-auto text-center' name='qty[$product_id]' value='$quantity'></td>
         <td>$product_price/-</td>
         <td>$subtotal/-</td>

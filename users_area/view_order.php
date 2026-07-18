@@ -150,7 +150,7 @@ include('../includes/navbar.php');
                     <tr>
                         <td><?php echo htmlspecialchars($item['product_title']); ?></td>
                         <td>
-                            <img src="../images/<?php echo htmlspecialchars($item['product_image1']); ?>" 
+                            <img src="../admin_area/product_images/<?php echo htmlspecialchars($item['product_image1']); ?>" 
                                  alt="<?php echo htmlspecialchars($item['product_title']); ?>" 
                                  style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"
                                  onerror="this.src='../images/download.png'">

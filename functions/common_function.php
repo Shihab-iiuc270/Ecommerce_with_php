@@ -38,7 +38,7 @@ function getproducts(){
     $product_price=$row['product_price'];
     echo "<div class='col-md-4 mb-4'>
           <div class='card'>
-            <img src='images/$product_image1' alt='product image' class='card-img-top'>
+            <img src='./admin_area/product_images/$product_image1' alt='product image' class='card-img-top'>
             <div class='card-body'>
               <h5 class='card-title'>$product_title</h5>
               <p class='cart-text'>".substr($product_description,0,30)."...</p>
@@ -78,7 +78,7 @@ function get_categories_unique(){
     $product_price=$row['product_price'];
     echo "<div class='col-md-4 mb-4'>
           <div class='card'>
-            <img src='images/$product_image1' alt='product image' class='card-img-top'>
+            <img src='./admin_area/product_images/$product_image1' alt='product image' class='card-img-top'>
             <div class='card-body'>
               <h5 class='card-title'>$product_title</h5>
               <p class='cart-text'>".substr($product_description,0,30)."...</p>
@@ -119,7 +119,7 @@ function get_occasions_unique(){
     $product_price=$row['product_price'];
     echo "<div class='col-md-4 mb-4'>
           <div class='card'>
-            <img src='images/$product_image1' alt='product image' class='card-img-top'>
+            <img src='./admin_area/product_images/$product_image1' alt='product image' class='card-img-top'>
             <div class='card-body'>
               <h5 class='card-title'>$product_title</h5>
               <p class='cart-text'>".substr($product_description,0,30)."...</p>
@@ -154,7 +154,7 @@ function get_occasions_unique(){
     $product_price=$row['product_price'];
     echo "<div class='col-md-4 mb-4'>
           <div class='card'>
-            <img src='images/$product_image1' alt='product image' class='card-img-top'>
+            <img src='./admin_area/product_images/$product_image1' alt='product image' class='card-img-top'>
             <div class='card-body'>
               <h5 class='card-title'>$product_title</h5>
               <p class='cart-text'>".substr($product_description,0,30)."...</p>
@@ -197,7 +197,7 @@ function view_details(){
                 $product_image3 = htmlspecialchars($row['product_image3']);
                 $product_price = htmlspecialchars($row['product_price']);
 
-                $base_image_path = 'images/';
+                $base_image_path = './admin_area/product_images/';
                 
                 echo "
                 <div class='col-md-6 text-center'>
@@ -254,7 +254,7 @@ function search_products(){
     $product_price=$row['product_price'];
     echo "<div class='col-md-4 mb-4'>
           <div class='card'>
-            <img src='images/$product_image1' alt='product image' class='card-img-top'>
+            <img src='./admin_area/product_images/$product_image1' alt='product image' class='card-img-top'>
             <div class='card-body'>
               <h5 class='card-title'>$product_title</h5>
               <p class='cart-text'>".substr($product_description,0,30)."...</p>
