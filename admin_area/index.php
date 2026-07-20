@@ -238,6 +238,94 @@ if (!isset($_SESSION['admin_username'])) {
     ?>
     </div>
 
-    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    const sidebar = document.getElementById('adminSidebar');
+    const toggleBtn = document.getElementById("sidebarToggleBtn");
+    
+    if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(){
+            sidebar.classList.toggle('active');
+        });
+        
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(){
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+        
+        // Fixed typo here: 'documnet' -> 'document'
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768 && !sidebar.contains(e.target) &&
+                !toggleBtn.contains(e.target) && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+            }
+        });
+    }
+});
+</script>
+
+<script>
+  // Pie Chart Configuration
+  const ctx = document.getElementById('pieChart');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Users', 'Orders'],
+      datasets: [{
+       data: [<?= (int)$users ?>, <?= (int)$orders ?>],
+       backgroundColor: ['#581845', '#FFD700']
+      }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'bottom'
+            }
+        }
+    }
+  });
+
+  // Bar Chart Configuration
+  new Chart(document.getElementById('barChart'), {
+    type: 'bar',
+    data: {
+      labels: <?= json_encode($month_labels) ?>, // Removed extra array brackets
+      datasets: [{
+        label: 'Revenue ($)',
+        data: <?= json_encode($month_values) ?>,
+        backgroundColor: '#581845',
+        borderColor: '#900C3F',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+                return '$' + value.toLocaleString(); // Fixed typo here
+            }
+          }
+        }
+      },
+      plugins: {
+          legend: {
+              display: true,
+              position: 'bottom'
+          }
+      }
+    }
+  });
+</script>
 </body>
 </html>
